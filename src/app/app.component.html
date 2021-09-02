@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Lançamento</th>
+    <th>Valor</th>
+  </tr>
+  <ng-container *ngFor="let group of transactionsGroup; let lastGroup = last">
+    <tr *ngFor="let transaction of group; let lastTransaction = last; index as i" [ngClass]="{'remove-bottom': !lastTransaction || lastGroup}" >
+      <td>
+        <ng-container *ngIf="i === 0">
+        {{ transaction.date | date: "shortDate" }}
+        </ng-container>
+      </td>
+      <td>{{ transaction.entry }}</td>
+      <td>{{ transaction.amount }}</td>
+    </tr>
+  </ng-container>
+</table>
